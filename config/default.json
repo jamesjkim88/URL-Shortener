@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://<username>:<password>@cluster0-bbpog.mongodb.net/test?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}
