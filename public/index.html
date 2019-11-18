@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+
+    body,
+    html{
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .container{
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h1>url shortener</h1>
+      <input type="text" style="width: 550px; height: 25px;">
+      <button>Click</button>
+    <p class="short-url"></p>
+    </div>
+
+  <script>
+
+  const input = document.querySelector("input");
+  const btn = document.querySelector("button");
+  const url = "http://localhost:5000/api/url/shorten"
+
+  // click event to make post call to back end server
+  btn.addEventListener('click', (evt) => {
+    console.log("click foo");
+    console.log(input.value);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.responseText);
+        const shortUrl = xhr.responseText;
+        const divShortUrl = document.querySelector(".short-url");
+        divShortUrl.innerHTML = shortUrl;
+      };
+    };
+    xhr.send(
+      JSON.stringify({longUrl: input.value})
+    );
+});
+
+
+  </script>
+</body>
+</html>
