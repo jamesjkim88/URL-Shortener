@@ -22,7 +22,7 @@ router.post('/shorten', async(req, res) => {
     try{
       let url = await Url.findOne({ longUrl });
       if(url){
-        res.json(url);
+        res.send(url.shortUrl);
       }else{
         const shortUrl = baseUrl + '/' + urlCode;
         url = new Url({

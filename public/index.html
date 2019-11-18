@@ -25,7 +25,7 @@
       <h1>url shortener</h1>
       <input type="text" style="width: 550px; height: 25px;">
       <button>Click</button>
-    <p class="short-url"></p>
+      <p><a target="_blank" class="short-url" href=""></a></p>
     </div>
 
   <script>
@@ -46,7 +46,9 @@
         console.log(xhr.responseText);
         const shortUrl = xhr.responseText;
         const divShortUrl = document.querySelector(".short-url");
+        const aTag = document.querySelector("a");
         divShortUrl.innerHTML = shortUrl;
+        aTag.href = shortUrl;
       };
     };
     xhr.send(
