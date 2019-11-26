@@ -2,6 +2,8 @@
 
 Built using **JavaScript**, **Node.js**, **Express**, and **MongoDB w/ Atlas**.
 
+If you don't have a **MongoDB Atlas** account please create one and create a cluster and fill out <username> and <password> with the cluster username and password.
+
 Run **npm install** on the correct directory on terminal to install dependencies and devdependencies.
 
 After installing dependencies and devdependencies, run express server with nodemon typing **npm run dev**.
