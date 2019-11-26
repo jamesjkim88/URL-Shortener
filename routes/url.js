@@ -14,15 +14,17 @@ router.post('/shorten', async(req, res) => {
     return res.status(401).json('Invalid base url');
   }
 
-  //create url code
+  //creating unique url code
   const urlCode = shortId.generate();
 
-  //check long url
+  //checking if longUrl is valid                                                                                                                       l
   if(validUrl.isUri(longUrl)){
     try{
-      let url = await Url.findOne({ longUrl });
+      let url = await Url.findOne({ longUrl }); // doing findOne for longUrl because it's the first entry to DB
+      // if there is a url obj send the shortUrl
       if(url){
         res.send(url.shortUrl);
+      // if not create a new data entry
       }else{
         const shortUrl = baseUrl + '/' + urlCode;
         url = new Url({
@@ -34,7 +36,6 @@ router.post('/shorten', async(req, res) => {
         await url.save(() => {
           res.send(url.shortUrl);
         });
-        console.log(url);
       }
     }catch(err){
       console.error(err);

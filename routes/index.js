@@ -4,6 +4,7 @@ const Url = require('../models/url');
 
 module.exports = router;
 
+// redirecting the shortUrl to the longUrl
 router.get('/:code', async(req,res) => {
   try{
     const url = await Url.findOne({ urlCode: req.params.code })
