@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.2.4",
+    "config": "^3.3.8",
     "express": "^4.17.1",
     "mongoose": "^5.7.11",
     "path": "^0.12.7",
